@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdvancedMarketing.co — Document Signing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Landing / Form Selector -->
+<div id="landing" class="screen active">
+  <div class="landing-container">
+    <img src="logo.png" alt="AdvancedMarketing.co" class="landing-logo">
+    <h1>Document Signing Portal</h1>
+    <p class="subtitle">Select a document to review and sign electronically</p>
+    <div class="card-grid">
+      <div class="doc-card" onclick="showForm('nda')">
+        <div class="card-icon">&#128274;</div>
+        <h3>NDA & Non-Compete Agreement</h3>
+        <p>Non-Disclosure and Non-Compete Agreement for Sales Representatives</p>
+        <span class="card-btn">Review & Sign</span>
+      </div>
+      <div class="doc-card" onclick="showForm('dd')">
+        <div class="card-icon">&#127974;</div>
+        <h3>Direct Deposit Form</h3>
+        <p>Authorization form for direct deposit payroll payments</p>
+        <span class="card-btn">Fill Out & Sign</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NDA / Non-Compete Form -->
+<div id="nda-form" class="screen">
+  <div class="form-container">
+    <button class="back-btn" onclick="goBack()">&larr; Back</button>
+    <div class="form-header">
+      <img src="logo.png" alt="AdvancedMarketing.co" class="form-logo">
+      <h1>Non-Disclosure & Non-Compete Agreement</h1>
+      <p class="form-subtitle">AdvancedMarketing.co</p>
+    </div>
+
+    <form id="ndaFormEl" onsubmit="return submitNDA(event)">
+      <!-- Effective Date -->
+      <div class="form-section">
+        <label class="field-label">Effective Date</label>
+        <input type="date" name="effectiveDate" required>
+      </div>
+
+      <!-- Company Info -->
+      <div class="form-section">
+        <h2>Company Information</h2>
+        <div class="field-row">
+          <div class="field">
+            <label>Company Name</label>
+            <input type="text" value="AdvancedMarketing.co" readonly class="readonly">
+          </div>
+          <div class="field">
+            <label>Company Address</label>
+            <input type="text" name="companyAddress" value="Hong Kong, SAR China" readonly class="readonly">
+          </div>
+        </div>
+      </div>
+
+      <!-- Representative Info -->
+      <div class="form-section">
+        <h2>Sales Representative Information</h2>
+        <div class="field-row">
+          <div class="field">
+            <label>Full Legal Name</label>
+            <input type="text" name="repName" placeholder="Enter full legal name" required>
+          </div>
+          <div class="field">
+            <label>Address</label>
+            <input type="text" name="repAddress" placeholder="Enter address" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agreement Sections -->
+      <div class="form-section agreement-text">
+        <h2>1. Purpose</h2>
+        <p>The Representative acknowledges that during their engagement with AdvancedMarketing.co, they will have access to proprietary information including but not limited to: client lists, pricing structures, sales strategies, marketing methodologies, internal processes, trade secrets, business plans, and all other confidential business information. This Agreement is designed to protect the Company's legitimate business interests.</p>
+      </div>
+
+      <div class="form-section agreement-text">
+        <h2>2. Non-Disclosure Obligations</h2>
+        <p>The Representative agrees to the following non-disclosure obligations:</p>
+        <ol type="a">
+          <li>The Representative shall not disclose, share, publish, or otherwise make available any Confidential Information of the Company to any third party, whether directly or indirectly, without prior written consent from the Company.</li>
+          <li>Confidential Information includes, but is not limited to: client/prospect lists, contact information, lead databases, pricing models, proposal templates, sales scripts, cold calling lists, outreach sequences, website development processes, internal tools, revenue figures, compensation structures, and any proprietary business methodologies.</li>
+          <li>The Representative shall not use any Confidential Information for personal gain or for the benefit of any competing entity.</li>
+          <li>All documents, files, records, and materials (physical or digital) containing Confidential Information remain the exclusive property of the Company and must be returned or destroyed upon termination of the engagement.</li>
+          <li>These non-disclosure obligations shall survive the termination of this Agreement and remain in effect indefinitely.</li>
+        </ol>
+      </div>
+
+      <div class="form-section agreement-text">
+        <h2>3. Non-Compete Restrictions</h2>
+        <p>The Representative agrees to the following non-compete restrictions for a period of <strong>THREE (3) YEARS</strong> from the date of termination of their engagement with the Company, regardless of the reason for termination:</p>
+        <ol type="a">
+          <li>The Representative shall <strong>NOT</strong> build, design, develop, or participate in the creation of websites for any competing website development agency, web design firm, digital marketing agency, or any entity that offers website development services.</li>
+          <li>The Representative shall <strong>NOT</strong> engage in cold calling, cold emailing, direct outreach, lead generation, or any form of solicitation on behalf of any competing website development agency or digital marketing firm.</li>
+          <li>The Representative shall <strong>NOT</strong> solicit, contact, approach, or attempt to recruit any current or former clients, prospects, or leads of AdvancedMarketing.co for the purpose of offering competing website development or digital marketing services.</li>
+          <li>The Representative shall <strong>NOT</strong> solicit, recruit, or attempt to hire any current or former employees, contractors, or team members of AdvancedMarketing.co to work for a competing entity.</li>
+          <li>The Representative shall <strong>NOT</strong> directly or indirectly own, manage, operate, consult for, be employed by, or participate in any business that competes with the Company's website development and digital marketing services.</li>
+          <li>The Representative shall <strong>NOT</strong> use any sales techniques, scripts, processes, or methodologies learned at AdvancedMarketing.co for the benefit of any competing business.</li>
+        </ol>
+      </div>
+
+      <div class="form-section agreement-text">
+        <h2>4. Non-Compete Period</h2>
+        <p>The non-compete restrictions set forth in Section 3 shall be in effect for a period of <strong>THREE (3) YEARS</strong>, commencing on the last day of the Representative's engagement with the Company, whether terminated voluntarily, involuntarily, or by mutual agreement.</p>
+      </div>
+
+      <div class="form-section agreement-text">
+        <h2>5. Scope & Geographic Limitation</h2>
+        <p>This Agreement applies to any and all geographic regions, territories, and markets in which AdvancedMarketing.co operates or has conducted business, including but not limited to all online/digital markets. The Representative acknowledges that the Company operates in a digital marketplace without geographic boundaries, and therefore the restrictions herein apply globally.</p>
+      </div>
+
+      <div class="form-section agreement-text">
+        <h2>6. Remedies & Enforcement</h2>
+        <p>The Representative acknowledges that any breach of this Agreement will cause irreparable harm to the Company that cannot be adequately compensated by monetary damages alone. In the event of a breach or threatened breach:</p>
+        <ol type="a">
+          <li>The Company shall be entitled to seek immediate injunctive relief, specific performance, and any other equitable remedies available under law, without the need to post a bond.</li>
+          <li>The Company shall be entitled to recover all actual damages, lost profits, and consequential damages resulting from the breach.</li>
+          <li>The Representative shall be liable for all attorneys' fees, court costs, and legal expenses incurred by the Company in enforcing this Agreement.</li>
+          <li>A liquidated damages amount of <strong>$50,000 (Fifty Thousand Dollars)</strong> per violation shall be assessed for each proven breach of Sections 2 or 3 of this Agreement, in addition to any other damages.</li>
+          <li>The non-compete period shall be extended by the duration of any breach, so that the Company receives the full benefit of the agreed-upon restricted period.</li>
+        </ol>
+      </div>
+
+      <div class="form-section agreement-text">
+        <h2>7. Severability</h2>
+        <p>If any provision of this Agreement is found to be unenforceable or invalid by a court of competent jurisdiction, the remaining provisions shall continue in full force and effect. The court shall have the authority to modify any overly broad provision to make it enforceable to the maximum extent permitted by law.</p>
+      </div>
+
+      <div class="form-section agreement-text">
+        <h2>8. Entire Agreement</h2>
+        <p>This Agreement constitutes the entire agreement between the parties concerning the subject matter hereof and supersedes all prior agreements, understandings, negotiations, and discussions, whether oral or written. This Agreement may not be amended or modified except by a written instrument signed by both parties.</p>
+      </div>
+
+      <div class="form-section agreement-text">
+        <h2>9. Governing Law</h2>
+        <div class="field-row">
+          <div class="field">
+            <label>State</label>
+            <input type="text" name="govState" placeholder="Enter state" required>
+          </div>
+          <div class="field">
+            <label>Court Jurisdiction</label>
+            <input type="text" name="courtJurisdiction" placeholder="Enter jurisdiction" required>
+          </div>
+        </div>
+        <p class="muted">This Agreement shall be governed by and construed in accordance with the laws of the specified state, without regard to its conflict of laws provisions.</p>
+      </div>
+
+      <div class="form-section agreement-text">
+        <h2>10. Acknowledgment</h2>
+        <p>The Representative acknowledges that they have read this Agreement in its entirety, understand all of its terms and conditions, have had the opportunity to seek independent legal counsel, and agree to be bound by its provisions. The Representative further acknowledges that the restrictions contained herein are reasonable and necessary to protect the Company's legitimate business interests.</p>
+        <div class="acknowledge-check">
+          <input type="checkbox" id="ndaAcknowledge" required>
+          <label for="ndaAcknowledge">I have read and understand all terms and conditions of this Agreement</label>
+        </div>
+      </div>
+
+      <!-- Signatures -->
+      <div class="form-section signatures">
+        <h2>Signatures</h2>
+
+        <div class="sig-block">
+          <h3>Company Representative — AdvancedMarketing.co</h3>
+          <div class="field-row">
+            <div class="field">
+              <label>Printed Name</label>
+              <input type="text" name="companySignerName" value="Benjamin Boyce" readonly class="readonly">
+            </div>
+            <div class="field">
+              <label>Title</label>
+              <input type="text" name="companySignerTitle" value="CEO" readonly class="readonly">
+            </div>
+          </div>
+          <label class="field-label">Signature <span style="color:#22c55e;font-size:12px;">(Pre-signed)</span></label>
+          <div class="signature-pad-wrapper">
+            <canvas id="companySig" class="signature-pad"></canvas>
+          </div>
+        </div>
+
+        <div class="sig-block">
+          <h3>Sales Representative</h3>
+          <label class="field-label">Signature</label>
+          <div class="signature-pad-wrapper">
+            <canvas id="repSig" class="signature-pad"></canvas>
+            <button type="button" class="clear-sig" onclick="clearSignature('repSig')">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Sign & Submit Agreement</button>
+    </form>
+  </div>
+</div>
+
+<!-- Direct Deposit Form -->
+<div id="dd-form" class="screen">
+  <div class="form-container">
+    <button class="back-btn" onclick="goBack()">&larr; Back</button>
+    <div class="form-header">
+      <img src="logo.png" alt="AdvancedMarketing.co" class="form-logo">
+      <h1>Direct Deposit Authorization Form</h1>
+      <p class="form-subtitle">AdvancedMarketing.co</p>
+    </div>
+
+    <form id="ddFormEl" onsubmit="return submitDD(event)">
+      <div class="form-section">
+        <p class="instructions">Please complete this form to authorize AdvancedMarketing.co to directly deposit your pay into your bank account. You will need your bank routing and account numbers — attach or upload a voided check or bank letter for verification.</p>
+      </div>
+
+      <!-- Employee Info -->
+      <div class="form-section">
+        <h2>Section 1: Employee Information</h2>
+        <div class="field-row">
+          <div class="field">
+            <label>Full Legal Name</label>
+            <input type="text" name="ddName" placeholder="Enter full legal name" required>
+          </div>
+          <div class="field">
+            <label>Employee ID (if applicable)</label>
+            <input type="text" name="ddEmpId" placeholder="Enter employee ID">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Last 4 Digits of SSN</label>
+            <input type="text" name="ddSSN" placeholder="XXXX" maxlength="4" pattern="[0-9]{4}" required>
+          </div>
+          <div class="field">
+            <label>Phone Number</label>
+            <input type="tel" name="ddPhone" placeholder="(555) 555-5555" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field full">
+            <label>Home Address</label>
+            <input type="text" name="ddAddress" placeholder="Street address" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>City</label>
+            <input type="text" name="ddCity" placeholder="City" required>
+          </div>
+          <div class="field">
+            <label>State</label>
+            <input type="text" name="ddState" placeholder="State" required>
+          </div>
+          <div class="field">
+            <label>ZIP Code</label>
+            <input type="text" name="ddZip" placeholder="ZIP" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field full">
+            <label>Email Address</label>
+            <input type="email" name="ddEmail" placeholder="email@example.com" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Request Type -->
+      <div class="form-section">
+        <h2>Section 2: Type of Request</h2>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="ddRequestType" value="new" required>
+            <span>New enrollment</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="ddRequestType" value="change">
+            <span>Change to existing direct deposit</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="ddRequestType" value="cancel">
+            <span>Cancel direct deposit</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Bank Account -->
+      <div class="form-section">
+        <h2>Section 3: Bank Account Information</h2>
+        <div class="field-row">
+          <div class="field full">
+            <label>Bank / Financial Institution Name</label>
+            <input type="text" name="ddBankName" placeholder="Enter bank name" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field full">
+            <label>Bank Address</label>
+            <input type="text" name="ddBankAddress" placeholder="Enter bank address" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>City</label>
+            <input type="text" name="ddBankCity" placeholder="City" required>
+          </div>
+          <div class="field">
+            <label>State</label>
+            <input type="text" name="ddBankState" placeholder="State" required>
+          </div>
+          <div class="field">
+            <label>ZIP Code</label>
+            <input type="text" name="ddBankZip" placeholder="ZIP" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Routing Number (9 digits)</label>
+            <input type="text" name="ddRouting" placeholder="Enter 9-digit routing number" maxlength="9" pattern="[0-9]{9}" required>
+          </div>
+          <div class="field">
+            <label>Account Number</label>
+            <input type="text" name="ddAccount" placeholder="Enter account number" required>
+          </div>
+        </div>
+        <div class="account-type-row">
+          <label class="field-label">Account Type</label>
+          <div class="radio-group horizontal">
+            <label class="radio-label">
+              <input type="radio" name="ddAccountType" value="checking" required>
+              <span>Checking</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="ddAccountType" value="savings">
+              <span>Savings</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Voided Check Upload -->
+        <div class="upload-area">
+          <label class="field-label">Upload Voided Check or Bank Letter</label>
+          <div class="upload-box" id="uploadBox" onclick="document.getElementById('checkUpload').click()">
+            <div class="upload-icon">&#128196;</div>
+            <p>Click to upload or drag & drop</p>
+            <span class="upload-hint">PNG, JPG, or PDF — Max 5MB</span>
+            <input type="file" id="checkUpload" accept=".png,.jpg,.jpeg,.pdf" style="display:none" onchange="handleUpload(this)">
+          </div>
+          <div id="uploadPreview" class="upload-preview" style="display:none">
+            <span id="uploadFileName"></span>
+            <button type="button" class="remove-upload" onclick="removeUpload()">Remove</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Authorization -->
+      <div class="form-section agreement-text">
+        <h2>Section 4: Authorization & Agreement</h2>
+        <p>I hereby authorize AdvancedMarketing.co to deposit my entire net pay directly into the bank account indicated above. I also authorize my financial institution to accept and credit any such deposits. I understand that if funds to which I am not entitled are deposited into my account, AdvancedMarketing.co is authorized to direct the bank to return said funds.</p>
+        <p>I understand that this authorization will remain in effect until I submit a written cancellation to the payroll department, or until AdvancedMarketing.co notifies me that this service has been terminated. I understand that it may take one to two pay cycles for changes to take effect.</p>
+        <p>I agree that any direct deposit transactions must comply with all applicable laws and regulations. I understand that I am responsible for verifying that deposits have been credited correctly to my account.</p>
+        <div class="acknowledge-check">
+          <input type="checkbox" id="ddAcknowledge" required>
+          <label for="ddAcknowledge">I authorize AdvancedMarketing.co to deposit my pay as described above</label>
+        </div>
+      </div>
+
+      <!-- Signature -->
+      <div class="form-section signatures">
+        <h2>Employee Signature</h2>
+        <div class="sig-block">
+          <label class="field-label">Sign below</label>
+          <div class="signature-pad-wrapper">
+            <canvas id="ddSig" class="signature-pad"></canvas>
+            <button type="button" class="clear-sig" onclick="clearSignature('ddSig')">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Direct Deposit Authorization</button>
+    </form>
+  </div>
+</div>
+
+<!-- Success Modal -->
+<div id="successModal" class="modal" style="display:none">
+  <div class="modal-content">
+    <div class="success-icon">&#10003;</div>
+    <h2>Document Submitted Successfully</h2>
+    <p id="successMsg"></p>
+    <div class="modal-actions">
+      <button onclick="downloadPDF()" class="modal-btn primary">Print Agreement</button>
+      <button onclick="closeModal()" class="modal-btn secondary">Return to Portal</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
